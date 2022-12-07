@@ -88,12 +88,16 @@ class HitCarder(object):
             new_form = re.findall(r'<ul>[\s\S]*?</ul>', html)[0]
         except IndexError as _:
             raise RegexMatchError('Relative info not found in html with regex')
+        # print(new_form)
 
         with open("form.txt", "r", encoding="utf-8") as f:
+            # print(new_form)
+            # print('*****')
+            # print(f.read())
             if new_form == f.read():
                 return True
-        #with open("form.txt", "w", encoding="utf-8") as f:
-        #     f.write(new_form)
+        with open("form.txt", "w", encoding="utf-8") as f:
+             f.write(new_form)
         return False
 
     def get_info(self, html=None):
@@ -218,8 +222,10 @@ def main(username, password):
 
 
 if __name__ == "__main__":
-    username = os.environ['USERNAME']
-    password = os.environ['PASSWORD']
+    # username = os.environ['USERNAME']
+    # password = os.environ['PASSWORD']
+    username = '11821035'
+    password = 'ljr1996win-'
 
     ret, msg = main(username, password)
     print(ret, msg)
